@@ -10,18 +10,6 @@ const bot = new aoijs.Bot({
 
 });
 
-const aoijs =  require("aoi.js");
-
-const bot = new aoijs.Bot({
-
-  token: "OTQyMjQyOTI0NDE3MTQ2OTIw.YghqGw.yfFx9yEYm3ihYflewYyiNsKXiHQ",
-
-  prefix: "!",
-
-    intents: "all"
-
-});
-
 bot.onMessage();
 
 const fs = require("fs");
