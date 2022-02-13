@@ -10,30 +10,53 @@ const bot = new aoijs.Bot({
 
 });
 
-bot.command({
-	name: 'status',
-	code: `
-  $onlyForIDs[your id;]
-  $thumbnail[1;$serverIcon[$guildID]
-  $author[1;Moderator status;$serverIcon]
-  $description[1;
-**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
+const aoijs =  require("aoi.js");
 
-**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
+const bot = new aoijs.Bot({
 
-**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
+  token: "OTQyMjQyOTI0NDE3MTQ2OTIw.YghqGw.yfFx9yEYm3ihYflewYyiNsKXiHQ",
 
-**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
+  prefix: "!",
 
-**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
+    intents: "all"
 
-**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
-
-**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
-  $color[1;BLUE]
-  $footer[1;Updates every 10 seconds]
-  $addTimestamp[1]`
 });
+
+bot.onMessage();
+
+const fs = require("fs");
+
+const folders = fs.readdirSync("./commands/");
+
+for (const files of folders) {
+
+  const folder = fs
+
+    .readdirSync(`./commands/${files}/`)
+
+    .filter(file => file.endsWith(".js"));
+
+  for (const commands of folder) {
+
+    const command = require(`./commands/${files}/${commands}`);
+
+    bot.command({
+
+      name: command.name,
+
+      aliases: command.aliases,
+
+      description: command.description,
+
+      usage: command.usage,
+
+      code: command.code
+
+    });
+
+  }
+
+}
 
 bot.loopCommand({
 	code: `$editMessage[message id;{newEmbed:{title:Moderator status}{description: 
