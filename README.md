@@ -29,6 +29,8 @@ Type (npm i aoi.js) in shell.
   "prefix": "!"
 }
 ```
+# 📝Notes
+* Make sure to eval first, and copy the id message of bot that was eval. And put it on `$editMessage[message id;`
 
 [![Run on Repl.it](https://repl.it/badge/github/Discord-Bot-Developers1/status-system)](https://repl.it/github/Discord-Bot-Developers1/status-system)
 
