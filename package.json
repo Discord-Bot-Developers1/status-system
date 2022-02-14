@@ -1,4 +1,8 @@
 {
+"name": "status-system",
+  "version": "1.3.2",
+  "description": "status-system",
+  "license": "MIT",
   "devDependencies": {
     "node": "^16.6.1"
   },
