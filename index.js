@@ -12,39 +12,30 @@ const bot = new aoijs.Bot({
 
 bot.onMessage();
 
-const fs = require("fs");
+bot.command({
+	name: 'status',
+	code: `
+  $onlyForIDs[your id;]
+  $thumbnail[1;$serverIcon[$guildID]]
+  $author[1;Moderator status;$serverIcon]
+  $description[1;
+**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
 
-const folders = fs.readdirSync("./commands/");
+**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
 
-for (const files of folders) {
+**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
 
-  const folder = fs
+**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
 
-    .readdirSync(`./commands/${files}/`)
+**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
 
-    .filter(file => file.endsWith(".js"));
+**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
 
-  for (const commands of folder) {
-
-    const command = require(`./commands/${files}/${commands}`);
-
-    bot.command({
-
-      name: command.name,
-
-      aliases: command.aliases,
-
-      description: command.description,
-
-      usage: command.usage,
-
-      code: command.code
-
-    });
-
-  }
-
-}
+**$userTag[user id]** is now $replaceText[$replaceText[$replaceText[$replaceText[$status[user id];offline;:black_circle: Offline];online;:green_circle: Online];dnd;:red_circle: Do not disturb];idle;:yellow_circle: Idle]
+  $color[1;BLUE]
+  $footer[1;Updates every 10 seconds]
+  $addTimestamp[1]`
+});
 
 bot.loopCommand({
 	code: `$editMessage[message id;{newEmbed:{title:Moderator status}{description: 
