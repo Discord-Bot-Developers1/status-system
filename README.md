@@ -34,4 +34,4 @@ Type (npm i aoi.js) in shell.
 
 [![Run on Repl.it](https://repl.it/badge/github/Discord-Bot-Developers1/status-system)](https://repl.it/github/Discord-Bot-Developers1/status-system)
 
-Main Credits go to [Zedge#9417](https://discord.gg/kkhazwM66M)
+Main Credits goes to [Kelvin11#7013](https://discord.gg/kkhazwM66M)
